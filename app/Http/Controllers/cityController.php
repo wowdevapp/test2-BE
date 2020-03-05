@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\city;
+use App\City;
 use Illuminate\Support\Facades\Validator;
 
 class CityController extends Controller
@@ -17,7 +17,7 @@ class CityController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json('name  is required !!!!');
+            return response()->json('name  or partner id is required !!!!');
         }
 
         City::create([

@@ -17,8 +17,13 @@ use Illuminate\Http\Request;
     return $request->user();
 }); */
 Route::domain('adminstration.localhost')->group(function () {
-    Route::post('/city', 'cityController@create');
-    Route::post('/delivery-times', 'delivryTimeController@create');
+    Route::post('/cities', 'CityController@create');
+    Route::post('/delivery-times', 'DelivryTimeController@create');
+    Route::post('/cities/{city_id}/delivery-times', 'CitiesDelivryTimeController@create');
     Route::post('/excluded-delivery', 'ExcludedDeliveryController@create');
+
+});
+Route::domain('localhost')->group(function () {
+    Route::get('/cities/{city_id}/delivery-dates/{number_of_days}', 'CheckOrderController@index');
 
 });

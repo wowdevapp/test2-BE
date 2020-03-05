@@ -15,10 +15,9 @@ class CreateDlvrTimesTable extends Migration
     {
         Schema::create('dlvr_times', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('city_id');
-            $table->string('delivery_time');
+            $table->string('start_time');
+            $table->string('end_time');
             $table->timestamps();
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
         });
     }
 

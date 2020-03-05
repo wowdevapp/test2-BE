@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ExcludedDelivery extends Model
+class CitiesDeliveryTime extends Model
 {
     //
-    protected $fillable = ['city_id', 'date', 'delivery_time_id'];
+    protected $fillable = ['delivery_time_id','city_id'];
+
+
     public function city() {
         return $this->belongsTo(City::class);
     }

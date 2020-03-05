@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExcludedDeliveriesTable extends Migration
+class CreateCitiesDeliveryTimesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateExcludedDeliveriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('excluded_deliveries', function (Blueprint $table) {
+        Schema::create('cities_delivery_times', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('city_id')->unsigned();
             $table->unsignedBigInteger('delivery_time_id');
-            $table->string('date');
-            $table->timestamps();
-
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('delivery_time_id')->references('id')->on('dlvr_times');
+            $table->timestamps();
         });
     }
 
@@ -32,6 +30,6 @@ class CreateExcludedDeliveriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('excluded_deliveries');
+        Schema::dropIfExists('cities_delivery_times');
     }
 }

@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\dlvr_time;
+use App\DlvrTime;
 use Illuminate\Support\Facades\Validator;
 
-class delivryTimeController extends Controller
+class DelivryTimeController extends Controller
 {
     //
         public function create(Request $request) {
 
            //validation check
             $validator = Validator::make($request->all(), [
-                'delivery_time' => 'required',
-                'city_id'       => 'required',
+                'start_time' => 'required',
+                'end_time'       => 'required',
             ]);
     
             if ($validator->fails()) {
-                return response()->json('time of delivrey required !!!!');
+                return response()->json('start time or end time required !!!!');
             }
             //insert data to table
-            dlvr_time::create([
-                'delivery_time' => $request->delivery_time,
-                'city_id' => $request->city_id,
+            DlvrTime::create([
+                'start_time' => (string) $request->start_time,
+                'end_time' => (string)   $request->end_time,
             ]);
     
             return response()->json('we add your time succesfully');

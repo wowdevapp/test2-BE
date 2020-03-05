@@ -4,20 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class city extends Model
+class DlvrTime extends Model
 {
     //
-    protected $fillable = ['name','partner_id'];
+    protected $fillable = ['city_id', 'delivery_time','start_time','end_time'];
 
     public function citiesdeliveryTimes() {
         return $this->hasMany(CitiesDeliveryTime::class);
     }
     public function excludeddeliveries() {
         return $this->hasMany(ExcludedDelivery::class);
-    }
-    
-
-    public function partners() {
-        return $this->belongsTo(Partner::class);
     }
 }
